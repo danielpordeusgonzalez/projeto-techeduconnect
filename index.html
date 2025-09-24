@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Curso de Estágio - Boas-vindas</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="screen">
+        <h1>🎓 Bem-vindo ao Curso!</h1>
+        <p>Este curso contém um quiz de 3 perguntas sobre desenvolvimento web.</p>
+        <p><strong>Para aprovar, você precisa de 60% ou mais.</strong></p>
+        
+        <button onclick="startCourse()" class="btn-next">Avançar →</button>
+    </div>
+
+    <script src="js/scorm_api.js"></script>
+    <script>
+        function startCourse() {
+            // Inicializa o SCORM e marca como "iniciado"
+            scorm.initialize();
+            scorm.setStatus("incomplete");
+            
+            // Vai para o quiz
+            window.location.href = "quiz.html";
+        }
+    </script>
+</body>
+</html>

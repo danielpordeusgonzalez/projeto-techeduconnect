@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Curso Concluído</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="screen">
+        <h1 id="result-title">🎉 Parabéns!</h1>
+        
+        <div id="result-info">
+            <p>Você acertou <span id="correct-answers">0</span> de 3 perguntas.</p>
+            <p>Sua nota: <span id="final-score">0</span>%</p>
+            <p id="status-message"></p>
+        </div>
+        
+        <!-- Botão alterado para Reiniciar Curso -->
+        <button onclick="restartCourse()" class="btn-next">🔄 Reiniciar Curso</button>
+    </div>
+
+    <script src="js/scorm_api.js"></script>
+    <script>
+        // Quando a página carrega, mostra os resultados finais
+        document.addEventListener('DOMContentLoaded', function() {
+            // Recupera a pontuação do localStorage
+            const score = localStorage.getItem('quizScore') || 0;
+            const correctAnswers = Math.floor((score / 100) * 3);
+            
+            // Atualiza a interface
+            document.getElementById('correct-answers').textContent = correctAnswers;
+            document.getElementById('final-score').textContent = score;
+            
+            // Define a mensagem baseada na nota
+            const statusMessage = document.getElementById('status-message');
+            if (score >= 60) {
+                document.getElementById('result-title').textContent = '🎉 Parabéns, você foi aprovado!';
+                statusMessage.innerHTML = '<strong>Status no sistema: APROVADO</strong>';
+                statusMessage.style.color = 'green';
+            } else {
+                document.getElementById('result-title').textContent = '😔 Que pena, você foi reprovado';
+                statusMessage.innerHTML = '<strong>Status no sistema: REPROVADO</strong>';
+                statusMessage.style.color = 'red';
+            }
+            
+            // ENVIA OS DADOS PARA O LMS (isso é invisível para o aluno)
+            scorm.completeCourse(score);
+        });
+        
+        function restartCourse() {
+            // Limpa o localStorage para reiniciar o quiz
+            localStorage.removeItem('quizScore');
+            
+            // Reinicia o status do SCORM (opcional, dependendo do que você quer)
+            scorm.setStatus("incomplete");
+            
+            // Volta para a tela inicial
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest identifier="ESTAGIO_CURSO_001" version="1.0" 
+           xmlns="http://www.imsglobal.org/xsd/imscp_v1p1"
+           xmlns:adlcp="http://www.adlnet.org/xsd/adlcp_v1p3" 
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://www.imsglobal.org/xsd/imscp_v1p1 imscp_v1p1.xsd 
+                               http://www.imsglobal.org/xsd/imsss imsss_v1p0.xsd 
+                               http://www.adlnet.org/xsd/adlcp_v1p3 adlcp_v1p3.xsd">
+    
+    <metadata>
+        <schema>ADL SCORM</schema>
+        <schemaversion>1.2</schemaversion>
+        <adlcp:location>adlcp_rootv1p2.xsd</adlcp:location>
+    </metadata>
+    
+    <organizations default="ESTAGIO_ORG">
+        <organization identifier="ESTAGIO_ORG" structure="hierarchical">
+            <title>Curso de Estágio</title>
+            <item identifier="ITEM_1" identifierref="RES_INDEX">
+                <title>Boas-vindas</title>
+            </item>
+            <item identifier="ITEM_2" identifierref="RES_QUIZ">
+                <title>Quiz</title>
+            </item>
+            <item identifier="ITEM_3" identifierref="RES_CONCLUSION">
+                <title>Conclusão</title>
+            </item>
+        </organization>
+    </organizations>
+    
+    <resources>
+        <!-- Recurso para a tela inicial -->
+        <resource identifier="RES_INDEX" type="webcontent" adlcp:scormtype="sco" href="index.html">
+            <file href="index.html"/>
+            <file href="css/style.css"/>
+            <file href="js/scorm_api.js"/>
+            <file href="images/background.jpg"/>
+        </resource>
+        
+        <!-- Recurso para o quiz -->
+        <resource identifier="RES_QUIZ" type="webcontent" adlcp:scormtype="sco" href="quiz.html">
+            <file href="quiz.html"/>
+            <file href="css/style.css"/>
+            <file href="js/scorm_api.js"/>
+            <file href="js/quiz.js"/>
+            <file href="images/background.jpg"/> 
+        </resource>
+        
+        <!-- Recurso para a conclusão -->
+        <resource identifier="RES_CONCLUSION" type="webcontent" adlcp:scormtype="sco" href="conclusion.html">
+            <file href="conclusion.html"/>
+            <file href="css/style.css"/>
+            <file href="js/scorm_api.js"/>
+            <file href="images/background.jpg"/> 
+        </resource>
+    </resources>
+</manifest>
